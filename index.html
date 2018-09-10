@@ -59,70 +59,140 @@
 
         </google-codelab-step>
 
-      <google-codelab-step label="Understand how it works" duration="4">
-        <aside class="special"><p><strong>Key terms:</strong></p>
+      <google-codelab-step label="Memahai Cara kerjanya" duration="4">
+        <aside class="special"><p><strong>Istilah kunci::</strong></p>
 <ul>
-<li><strong>Action</strong>: An Action is an entry point into an interaction that you build for the Assistant. Users can request your Action by typing or speaking to the Assistant.</li>
+<li><strong>Action</strong>: Action adalah titik masuk ke interaksi yang Anda buat untuk Asisten. Pengguna dapat meminta Tindakan Anda dengan mengetik atau berbicara kepada Asisten.</li>
 </ul>
 </aside>
-<p>So, how does an Action work?</p>
-<p>To start a conversation, the user needs to invoke your Action through the Assistant. Users say or type a phrase like <em>&#34;Hey Google, talk to Google IO 18&#34;</em>. This tells the Assistant the name of the Action to talk to.</p>
+<p>Jadi, bagaimana cara kerja Action?</p>
+<p>Untuk memulai percakapan, pengguna perlu menjalankan Tindakan Anda melalui Asisten. Pengguna mengatakan atau mengetik frasa seperti "Hai Google, bicara dengan Google IO 18". Ini memberitahu Asisten nama Action untuk diajak bicara. Dari titik ini dan seterusnya, pengguna berbicara dengan Tindakan Anda dan memberikannya masukan. Percakapan ini berlanjut sebagai dialog dua arah hingga tujuan pengguna terpenuhi atau percakapan telah selesai..</p>
 <p>From this point onwards, the user is talking to your Action and giving it input. This conversation continues as a two-way dialog until the user&#39;s intent is fulfilled or the conversation is finished. </p>
-<p><img style="max-width: 624.00px" src="img/bdaaf2db85f0134f.png"></p>
+<p><img style="max-width: 624.00px" src="img/2.png"></p>
+<aside class="special"><p><strong>Istilah kunci:</strong></p>
+<ul>
+<li><strong>Intent</strong>:Tujuan atau tugas yang mendasari yang ingin dilakukan oleh pengguna; misalnya, memesan kopi atau menemukan sepotong musik. Dalam Tindakan di Google, ini direpresentasikan sebagai pengidentifikasi unik dan ucapan pengguna yang sesuai yang dapat memicu Intent tersebut..</li>
+<li><strong>Fulfillment</strong>:Layanan, aplikasi, umpan, percakapan, atau logika lain yang menangani maksud dan melakukan tindakan yang sesuai..</li>
+</ul>
+</aside>
+<p>Mari kita lihat apa yang terjadi di balik layar selama percakapan::</p>
+<p><img style="max-width: 624.00px" src="img/3.png"></p>
+<ul>
+<li>Tindakan Anda sepenuhnya dijalankan di awan, bahkan ketika pengguna berbicara dengan mereka di ponsel, perangkat rumah pintar, atau jam tangan mereka. </li>
+<li>Setiap Tindakan mendukung maksud tertentu dan memiliki pemenuhan yang sesuai yang memproses maksud tersebut.</li>
+<li>Perangkat pengguna mengirimkan ucapan pengguna ke Asisten Google, yang mengarahkannya ke layanan pemenuhan Anda melalui permintaan HTTP POST..</li>
+<li>Pemenuhan Anda menghasilkan respons yang relevan dan mengirimkannya kembali ke Asisten, yang akhirnya mengembalikannya kepada pengguna..</li>
+</ul>
+
+
+     <google-codelab-step label="Setup" duration="9">
+        <p>Anda membuat action dengan membuat sebuah Action project dan mendefinifinisakknya dengan dua hal untuk setiap action :  <em>intent </em>and the <em>fulfillment</em>. </p>
+<p>Bagian codelab ini menjelaskan bagaimana Anda mengatur proyek Tindakan Anda di Actions Console.</p>
+<h3><strong>Mengecek izin pengaturan Google</strong></h3>
+<p>Untuk menguji Tindakan yang akan Anda buat untuk codelab ini, Anda perlu mengaktifkan izin yang diperlukan.</p>
+<ol type="1" start="1">
+<li>Pergi ke ‘Activity Controls&#39; page (<a href="https://myaccount.google.com/activitycontrols" target="_blank">https://myaccount.google.com/activitycontrols</a>).</li>
+<li>Sign in dengan  Google account anda.</li>
+<li>Pastikan bahwa izin berikut diaktifkan: :</li>
+</ol>
+<ul>
+<li>Web &amp; App Activity</li>
+<li>Device Information</li>
+<li>Voice &amp; Audio Activity</li>
+</ul>
+<h3><strong>Membuat Actions project</strong></h3>
+<p>Actions projects menganfung nama actionmu dengan meta data (name, description, category) yang ada pada milikmu <a href="https://assistant.google.com/explore" target="_blank">Actions directory</a> listing.</p>
+<p><img style="max-width: 624.00px" src="img/4.png"></p>
+<p>Untuk memulai membuat Actions, pertama anda perlu membuat action projek seperti berikut : </p>
+<ol type="1" start="1">
+<li>Open  <a href="https://console.actions.google.com" target="_blank">Actions Console</a>.</li>
+<li>Click pada <strong>Add/import project</strong>.</li>
+<li>Ketikan pada <strong>Project name</strong>, seperti &#34;actions-codelab&#34;.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/5.png"></p>
+<ol type="1" start="4">
+<li>Click <strong>Create Project</strong>.</li>
+<li>click <strong>Skip</strong> Pada kanan halaman</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/6.png"></p>
+<ol type="1" start="6">
+<li>Click <strong>Build &gt; Actions</strong> pada kiri navigasi.</li>
+<li>Click <strong>Add  first Action mu</strong>.</li>
+<li>Memilih paling tidak 1 bahasa , untuk kali ini rekomendasi memakai bahasa inggris</li>
+<li>pada <strong>Custom intent </strong>card, click <strong>Build. </strong>Akan membuka  Dialogflow Console pada tab baru. </li>
+</ol>
+<p><img style="max-width: 598.00px" src="img/7.png"></p>
+<h3><strong>Anda mungkin bertanya-tanya bagaimana Asisten mem-parsing makna semantik input pengguna (seperti ucapan lisan). Ini dilakukan melalui pemahaman bahasa alami (NLU), yang memungkinkan perangkat lunak Google untuk mengenali kata-kata dalam ucapan. </p>
+<p>Untuk Tindakan Anda sendiri, Google menyediakan layanan yang disebut <a href="http://dialogflow.com/" target="_blank">Dialogflow</a> untuk membiarkan Anda menangani NLU dengan mudah. Dialogflow menyederhanakan tugas memahami masukan pengguna, mengekstraksi kata kunci dan frasa dari masukan, dan mengembalikan tanggapan. Anda menentukan bagaimana semua ini bekerja dalam agen Dialogflow.</p>
 <aside class="special"><p><strong>Key terms:</strong></p>
 <ul>
-<li><strong>Intent</strong>: An underlying goal or task the user wants to do; for example, ordering coffee or finding a piece of music. In Actions on Google, this is represented as a unique identifier and the corresponding user utterances that can trigger the intent.</li>
-<li><strong>Fulfillment</strong>: A service, app, feed, conversation, or other logic that handles an intent and carries out the corresponding Action.</li>
+<li><strong>Dialogflow</strong>: Layanan berbasis web yang disediakan oleh Google yang menggunakan agen untuk memproses masukan pengguna. Layanan ini memungkinkan Anda untuk mengintegrasikan aplikasi percakapan dengan Asisten, serta dengan platform percakapan lainnya..</li>
+<li><strong>NLU</strong>: Akronim untuk  &#34;Natural Language Understanding&#34;. Ini mengacu pada kemampuan perangkat lunak untuk memahami dan mengurai input pengguna. Pengembang dapat memilih untuk menggunakan Dialogflow atau solusi NLU mereka sendiri saat membuat Actions. </li>
 </ul>
 </aside>
-<p>Let&#39;s see what happens behind the scenes during a conversation:</p>
-<p><img style="max-width: 624.00px" src="img/dbd725edb3a93e79.png"></p>
+
+<p><img style="max-width: 624.00px" src="img/8.png"></p>
+<h3>Create<strong> a Dialogflow agent</strong></h3>
+<p>Sekarang setelah Anda membangun proyek Tindakan Anda, buat agen Dialogflow dan kaitkan dengan proyek Anda:</p>
+<ol type="1" start="1">
+<li>Setelah mengikuti langkah-langkah di atas, Anda seharusnya sudah berada di <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a> dengan nama proyek Tindakan Anda di bagian atas. Anda mungkin perlu mengotorisasi Dialogflow untuk menggunakan akun Google Anda, dan menerima Ketentuan Layanan.</li>
+</ol>
+
+<ol type="1" start="2">
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/9.png"></p>
+<p>Jika penciptaan agen berhasil, Anda akan berada di halaman Intents. Anda sekarang dapat mulai menyesuaikan bagaimana agen Dialogflow Anda menanggapi permintaan pengguna.</p>
+
+
+   
+      <google-codelab-step label="Starting a conversation" duration="10">
+        <p>Users start the conversation with your Actions through <a href="https://developers.google.com/actions/discovery/" target="_blank">invocation</a>. (An example of an explicit invocation is a phrase like <em>&#34;Hey Google, talk to MovieTime&#34;</em>.) The Assistant then tries to match the user&#39;s input to one of your Actions. </p>
+<h3><strong>Create a welcome intent</strong></h3>
+<p>Every Actions project must have a <em>welcome intent</em> that acts as an entry point for users to start conversations. The welcome intent is triggered when users explicitly invoke an Action by uttering its name. </p>
+<p>By default, Dialogflow creates a welcome intent for us. For this codelab, you&#39;ll modify the welcome intent that users trigger when they say &#34;<em>Hey Google, talk to my test app</em>&#34;. </p>
+<p>To modify the welcome intent:</p>
+<ol type="1" start="1">
+<li>In the <strong>Intents</strong> page of the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, click on <strong>Default Welcome Intent</strong>.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/432d2df50a42e07c.png"></p>
+<ol type="1" start="2">
+<li>Delete all of the other text responses by clicking the trash icon next to each one.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/3af251ecd136c4a8.png"></p>
+<ol type="1" start="3">
+<li>Under the <strong>Responses </strong>section, click <strong>Enter a text response </strong>and type &#34;Welcome! What is your favorite color?&#34;</li>
+<li>Click <strong>Save</strong>. You should see a &#34;Intent saved&#34; notification briefly pop up.</li>
+</ol>
+<h3><strong>Test the welcome intent</strong></h3>
+<p>The Actions Console provides a web interface for testing called the <em>simulator</em>. This interface lets you simulate hardware devices and their settings. You can also access debug information such as the request and response that your fulfillment receives and sends.</p>
+<aside class="special"><p><strong>Tip: </strong>You can find the most recent information about using the Actions Console simulator in this <a href="https://developers.google.com/actions/tools/simulator" target="_blank">guide</a>. Please refer there if you run into any issues following the steps listed below.</p>
+</aside>
+<p>To test out your Action in the Actions console simulator:</p>
+<ol type="1" start="1">
+<li>In the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a> left navigation, click on <strong>Integrations</strong>. Then, click on <strong>Google Assistant &gt; Integration Settings</strong>.</li>
+<li>Click Test to update your Actions project and load it into the Actions Console simulator. (If you see a ‘Check auto-preview setting&#39; dialog, you can leave the ‘Auto-preview changes&#39; option is enabled, then click <strong>Continue</strong>.)  </li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/e96ac29642231a05.png"></p>
+<ol type="1" start="3">
+<li>To test your Action in the simulator, type &#34;Talk to my test app&#34; into the <strong>Input</strong> field and hit enter.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/51f21d3f54b44d1d.png"></p>
+<p>Notice that when your Action&#39;s welcome intent is invoked, the Assistant responds with the greeting message and prompts the user to provide their favorite color.  </p>
+<aside class="warning"><p>If you see &#34;Welcome&#34; as the response in the simulator, without a prompt for your favorite color, it may be because you didn&#39;t delete the other responses. Make sure to complete step 2 in the ‘Create a welcome intent&#39; section above.</p>
+</aside>
+<h3><strong>Debug your Action</strong></h3>
+<p>The panel on the right shows debugging information that&#39;s useful when testing your Action:</p>
 <ul>
-<li>Your Actions run entirely in the cloud, even when users talk to them on their phone, smart home device, or watch. </li>
-<li>Every Action supports a specific intent and has a corresponding fulfillment that processes the intent.</li>
-<li>The user&#39;s device sends the user&#39;s utterance to the Google Assistant, which routes it to your fulfillment service via HTTP POST requests.</li>
-<li>Your fulfillment figures out a relevant response and sends that back to the Assistant, which ultimately returns it to the user.</li>
+<li>In the <strong>REQUEST</strong> and <strong>RESPONSE</strong> tabs, you can see the request and response bodies in JSON between the Assistant and Dialogflow. </li>
+<li>In the <strong>AUDIO</strong> tab, you&#39;ll see your Action&#39;s speech response. You can change the response and update to hear how it sounds when synthesized into speech. </li>
+<li>The <strong>DEBUG</strong> and <strong>ERRORS</strong> tabs provide additional information to help you troubleshoot issues with your Action&#39;s response.</li>
 </ul>
+<p>In the next section of this codelab, we&#39;ll show how you can create dynamic, conversational responses.</p>
 
 
       </google-codelab-step>
-
-        <google-codelab-step label="Import simple" duration="2">
-            <p>Dari android studioo, pilih <code>android-start</code> direktori (<img style="max-width: 20.00px" src="img/bb745dc85ae69f6b.png">) from the sample code download (<strong>File</strong> &gt; <strong>Open </strong>&gt; .../GDGYogyakartaCodelabs-03-02-2017/codelab).</p>
-            <p>You should now have the android-start project open in Android Studio.</p>
-
-        </google-codelab-step>
-
-        <google-codelab-step label="Buat Firebase Project" duration="1">
-            <ol type="1" start="1">
-                <li>Buka web <a href="https://console.firebase.google.com" target="_blank">Firebase console</a>.</li>
-                <li>Pilih <strong>Create New Project</strong>, and beri nama projectmu &#34;OLXLite.&#34;</li>
-            </ol>
-            <h3>Connect your Android app</h3>
-            <ol type="1" start="1">
-                <li>Dari halaman overviewdari project baru kamu,
-                    <br>click <strong>Add Firebase to your Android app</strong>. </li>
-                <li>Masukkan codelab&#39;s package name: <code>com.ahmadrosid.olxlite</code>.</li>
-                <li>Masukkan SHA1 dari signing keystore kamu. Jika kamu menggunakan standard debug keystore, Gunakan command dibawah ini untuk mendapatkan SHA1 hash:</li>
-            </ol>
-            <pre><code>keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v -storepass android</code></pre>
-            <aside class="special">
-                <p><strong>Note</strong>: Keystore debug kamu berada pada file &#34;debug.keystore&#34;, dan berada pada direktory </p>
-                <p>&lt;home&gt;/.android/debug.keystore</p>
-                <p>Lihat <a href="https://developers.google.com/android/guides/client-auth" target="_blank">disini</a> Untuk mempelajari lebih detail tentang SHA1.</p>
-            </aside>
-            <h3>Tambahkan google-services.json kedalam projectmu</h3>
-            <p>Setelah menambahkan package name dan SHA1 dan Continue<strong>,</strong> browser kamu secara otomatis akan mendownloads a configuration file untuk seluruh yang penting kedalam project kamu. Copy file google-services.json kedalam <em><code>app</code></em> direktor project kamu.</p>
-            <h3>Dan google service plugin di projectmu</h3>
-            <p>Google-services digunakan untuk mengurai  data google-services.json untuk konfigurasi firebase. Masukkan kedalam build.gradle di direktory <em><code>app</code></em> dari project kamu:</p>
-            <pre><code>apply plugin: &#39;com.google.gms.google-services&#39;</code></pre>
-            <h3>Sync grdle build</h3>
-            <p>Untuk memastikan konfigurasi project grdle silahkan pilih <strong>Sync Project with Gradle Files </strong>(<img style="max-width: 21.31px" src="img/19a637a9cffe4b32.png">) dari Android Studio tool bar.</p>
-            <aside class="special">
-                <p><strong>Note</strong>: Untuk codelabs kali ini kamu hanya perlu klik sync pada toolbar andorid studioo.</p>
-            </aside>
-
-        </google-codelab-step>
+    
 
         <google-codelab-step label="Aktifkan Authentication" duration="5">
             <p>Yang pertama sebelum melanjutkan membuat aplikasi mari kita aktifkan firebase auth google plus .</p>
