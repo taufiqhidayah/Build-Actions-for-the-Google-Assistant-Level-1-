@@ -1,64 +1,63 @@
-
-
 <!doctype html>
 
 <html>
+
 <head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4F7DC9">
-  <meta charset="UTF-8">
-  <title>Build Actions for the Google Assistant (Level 1)</title>
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-  <link rel="import" href="../../elements/codelab.html">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-  <style>
-    body {
-      font-family: "Roboto",sans-serif;
-    }
-  </style>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#4F7DC9">
+    <meta charset="UTF-8">
+    <title>Build Actions for the Google Assistant (Level 1) </title>
+    <script src="webcomponents-lite.min.js"></script>
+    <link rel="import" href="codelab.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+    </style>
 
 </head>
+
 <body unresolved class="fullbleed">
 
-  <google-codelab title="Build Actions for the Google Assistant (Level 1)"
-                  environment="web"
-                  feedback-link="https://github.com/actions-on-google/codelabs-nodejs/issues">
+    <google-codelab title="GDG Joga Android Codelab" environment="web" feedback-link="https://github.com/firebase/friendlychat/issues">
 
-      <google-codelab-step label="Overview" duration="4">
-        <p>Actions on Google is a developer platform that lets you create software to extend the functionality of the <a href="https://assistant.google.com/" target="_blank">Google Assistant</a>, Google&#39;s virtual personal assistant, across more than 500 million devices, including smart speakers, phones, cars, TVs, headphones, and more. </p>
-<p>Users engage Google Assistant in conversation to get things done, like buying groceries or booking a ride. (For a complete list of what&#39;s possible now, see the <a href="https://assistant.google.com/explore/" target="_blank">Actions directory</a>.) As a developer, you can use Actions on Google to easily create and manage delightful and effective conversational experiences between users and your own 3rd-party fulfillment service.</p>
-<p>This codelab is part of a multi-module tutorial. Each module can be taken standalone or in a learning sequence with other modules. In each module, we&#39;ll provide you with end-to-end instructions on how to build Actions from given software requirements and how to test your code. We&#39;ll also teach the necessary concepts and best practices for implementing Actions that give users high-quality conversational experiences. </p>
-<p>This codelab covers beginner-level concepts for developing with Actions on Google. You do not need to have any prior experience with the platform to follow this codelab.</p>
-<h3>What you&#39;ll build</h3>
-<p>In this codelab, you&#39;ll build a simple conversational Action with these features:</p>
-<ul>
-<li>Users can start a conversation by explicitly calling your Action by name, which then responds with a greeting message. </li>
-<li>Once in conversation, users are prompted to provide their favorite color. Your Action parses the user&#39;s input to extract the information it needs (namely, the color parameter). </li>
-<li>If a color is provided, your Action processes the color parameter to auto-generate a &#34;lucky number&#34; to send back to the user and the conversation ends.</li>
-<li>If no color is provided, your Action sends the user additional prompts until the parameter is extracted. </li>
-<li>Users can explicitly leave the conversation at any time.</li>
-</ul>
-<p><img style="max-width: 624.00px" src="img/157f022c342b8d61.png"></p>
-<h3 class="checklist">What you&#39;ll learn</h3>
+        <google-codelab-step label="Overview" duration="2">
+            <p><img style="max-width: 201.00px" src="img/1.png"><span>  </span><img style="max-width: 201.00px" src="img/olxlite_1.png"><span>  </span><img style="max-width: 201.00px" src="img/olxlite_2.png"></p>
+            <p>Image: OLXLite Android app.</p>
+            <p>Selamat datang pada Codelabs kali ini kita akan belajar bagaimana cara membuat action pada google Assistant. </p>
+            <h3>Apa yang akan kamu bikin?</h3>
+            <ul> 
+                <li>Pengguna dapat memulai percakapan dengan secara eksplisit memanggil Aksi Anda berdasarkan nama, yang kemudian merespons dengan pesan ucapan.</li>
+                <li>Setelah berbincang, pengguna diminta untuk memberikan warna favorit mereka. Your Action mem-parsing input pengguna untuk mengekstrak informasi yang dibutuhkan (yaitu, parameter warna).</li>
+                <li>Jika warna disediakan, Tindakan Anda memproses parameter warna untuk membuat "angka keberuntungan" secara otomatis untuk mengirim kembali ke pengguna dan percakapan berakhir.</li>
+                <li>Jika tidak ada warna yang disediakan, Tindakan Anda akan mengirimkan petunjuk tambahan kepada pengguna sampai parameter tersebut diekstraksi.</li>
+                <li>Pengguna dapat meninggalkan percakapan secara eksplisit kapan saja.</li>
+
+            </ul>
+
+            <h3>Apa yang akan kamu pelajari?</h3>
+            
 <ul class="checklist">
-<li>Understand how Actions work.</li>
-<li>How to create a project in the Actions Console.</li>
-<li>How to create a Dialogflow agent.</li>
-<li>How to define training phrases in Dialogflow.</li>
-<li>How to test your Action in the Actions Console Simulator.</li>
-<li>How to use Dialogflow slot-filling and system entities.</li>
-<li>How to implement Action fulfillment using the Action on Google client library and the Dialogflow inline editor.</li>
+<li>Memahami bagaimana Actions bekerja.</li>
+<li>Bagaimana cara membuat projek di Actions Console.</li>
+<li>Bagaimana membuat Dialogflow agent.</li>
+<li>Bagaimana melakukan training Dialogflow.</li>
+<li>Bagaimana cara Test Assistan pada Actions Console Simulator.</li>
+<li>Bagaimana menggunakan Dialogflow slot-filling and system entities.</li>
+<li>Bagaimana mengimplementasikan Action fulfillment menggunakan Action pada Google client library dan pada Dialogflow inline editor.</li>
 </ul>
-<h3><strong>What you&#39;ll need</strong></h3>
-<p>The following tools must be in your environment:</p>
+          
+<h3><strong>Apa yang kamu butuhkan </strong></h3>
+<p>Tool harus menyesuaikan environmentmu:</p>
 <ul>
-<li>A web browser, such as <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.</li>
+<li>Web Browser, seperti <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.</li>
 </ul>
 <h3><strong>Optional: Get the sample code</strong></h3>
 <p>You can optionally get the full project code for this codelab from our <a href="https://github.com/actions-on-google/codelabs-nodejs" target="_blank">GitHub repository</a>.</p>
 
 
-      </google-codelab-step>
+        </google-codelab-step>
 
       <google-codelab-step label="Understand how it works" duration="4">
         <aside class="special"><p><strong>Key terms:</strong></p>
@@ -88,318 +87,296 @@
 
       </google-codelab-step>
 
-      <google-codelab-step label="Setup" duration="9">
-        <p>You create Actions by creating an <em>Actions project</em> and defining two things for each action: the <em>intent </em>and the <em>fulfillment</em>. </p>
-<aside class="special"><p><strong>Key terms for Actions on Google:</strong></p>
-<ul>
-<li><strong>Actions project</strong>: A project you create to manage, test, and publish a collection of Actions; Google maintains your Actions project in a cloud backend. </li>
-<li><strong>Actions Console: </strong>A web-based tool that Google provides to simplify your Actions development; you can create, maintain, test, and publish your Actions using the console.</li>
-</ul>
-</aside>
-<p>This section of the codelab describes how you set up your Actions project in the Actions Console.</p>
-<h3><strong>Check your Google permission settings</strong></h3>
-<p>In order to test the Action that you&#39;ll build for this codelab, you need to enable the necessary permissions.</p>
-<ol type="1" start="1">
-<li>Go to the ‘Activity Controls&#39; page (<a href="https://myaccount.google.com/activitycontrols" target="_blank">https://myaccount.google.com/activitycontrols</a>).</li>
-<li>Sign in with your Google account, if you have not already done so.</li>
-<li>Ensure that the following permissions are enabled:</li>
-</ol>
-<ul>
-<li>Web &amp; App Activity</li>
-<li>Device Information</li>
-<li>Voice &amp; Audio Activity</li>
-</ul>
-<h3><strong>Create an Actions project</strong></h3>
-<p>Actions projects are containers for your Action(s) with the metadata (name, description, category) that becomes your <a href="https://assistant.google.com/explore" target="_blank">Actions directory</a> listing.</p>
-<p><img style="max-width: 624.00px" src="img/e9c72bbcbd3e4298.png"></p>
-<p>To start building Actions, you&#39;ll first need to create an Actions project as follows:</p>
-<ol type="1" start="1">
-<li>Open the <a href="https://console.actions.google.com" target="_blank">Actions Console</a>.</li>
-<li>Click on <strong>Add/import project</strong>.</li>
-<li>Type in a <strong>Project name</strong>, like &#34;actions-codelab&#34;. This name is for your own internal reference; later on, you can set an external name for your project.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/62cf5e10d4f3ef3a.png"></p>
-<ol type="1" start="4">
-<li>Click <strong>Create Project</strong>.</li>
-<li>Rather than pick a category, click <strong>Skip</strong> on the upper-right corner.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/89da5e88f95f1996.png"></p>
-<ol type="1" start="6">
-<li>Click <strong>Build &gt; Actions</strong> in the left nav.</li>
-<li>Click <strong>Add your first Action</strong>.</li>
-<li>Select at least one language for your Action, followed by <strong>Update</strong>. For this codelab, we recommend only selecting English.</li>
-<li>On the <strong>Custom intent </strong>card, click <strong>Build. </strong>This will open the Dialogflow Console in another tab. </li>
-</ol>
-<p><img style="max-width: 598.00px" src="img/1db846829fb5da10.png"></p>
-<h3><strong>How Actions work with Dialogflow</strong></h3>
-<p>You might be wondering how the Assistant parses the semantic meaning of user input (such as spoken utterances). This is done via <em>natural language understanding </em>(NLU), which allows Google&#39;s software to recognize words in speech. </p>
-<p>For your own Actions, Google provides a service called <a href="http://dialogflow.com/" target="_blank">Dialogflow</a> to let you handle NLU easily. Dialogflow simplifies the task of understanding user input, extracting key words and phrases from the input, and returning responses. You define how all this works within a Dialogflow agent.</p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Dialogflow</strong>: A web-based service provided by Google that uses an agent to process user input. This service allows you to integrate conversational apps with the Assistant, as well as with other conversation platforms.</li>
-<li><strong>NLU</strong>: Acronym for &#34;Natural Language Understanding&#34;. This refers to the capability of software to understand and parse user input. Developers can choose to use Dialogflow or their own NLU solutions when creating Actions. </li>
-</ul>
-</aside>
-<p>The following diagram shows an example of how Dialogflow (represented by the 2nd column from the right) handles user input from the Assistant and sends requests to your fulfillment (represented by the rightmost column).</p>
-<p><img style="max-width: 624.00px" src="img/dd9b9b73a367c4a6.png"></p>
-<h3>Create<strong> a Dialogflow agent</strong></h3>
-<p>Now that you&#39;ve built your Actions project, create a Dialogflow agent and associate it with your project:</p>
-<ol type="1" start="1">
-<li>After following the steps above, you should already be in the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a> with your Actions project name at the top. You may need to authorize Dialogflow to use your Google account, and accept the Terms of Service.</li>
-</ol>
-<aside class="warning"><p>Not in the Dialogflow Console? Make sure you&#39;ve completed all the steps in the ‘Create an Actions Project&#39; section. Still don&#39;t see it? Then you can navigate to the Dialogflow Console and select <strong>Create new agent</strong> in the left navigation.</p>
-</aside>
-<ol type="1" start="2">
-<li>Click <strong>Create</strong>.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/12b008c60c6dcf9d.png"></p>
-<p>If the agent creation is successful, you will be in the <strong>Intents</strong> page. You can now begin customizing how your Dialogflow agent responds to user requests.</p>
+        <google-codelab-step label="Import simple" duration="2">
+            <p>Dari android studioo, pilih <code>android-start</code> direktori (<img style="max-width: 20.00px" src="img/bb745dc85ae69f6b.png">) from the sample code download (<strong>File</strong> &gt; <strong>Open </strong>&gt; .../GDGYogyakartaCodelabs-03-02-2017/codelab).</p>
+            <p>You should now have the android-start project open in Android Studio.</p>
 
+        </google-codelab-step>
 
-      </google-codelab-step>
+        <google-codelab-step label="Buat Firebase Project" duration="1">
+            <ol type="1" start="1">
+                <li>Buka web <a href="https://console.firebase.google.com" target="_blank">Firebase console</a>.</li>
+                <li>Pilih <strong>Create New Project</strong>, and beri nama projectmu &#34;OLXLite.&#34;</li>
+            </ol>
+            <h3>Connect your Android app</h3>
+            <ol type="1" start="1">
+                <li>Dari halaman overviewdari project baru kamu,
+                    <br>click <strong>Add Firebase to your Android app</strong>. </li>
+                <li>Masukkan codelab&#39;s package name: <code>com.ahmadrosid.olxlite</code>.</li>
+                <li>Masukkan SHA1 dari signing keystore kamu. Jika kamu menggunakan standard debug keystore, Gunakan command dibawah ini untuk mendapatkan SHA1 hash:</li>
+            </ol>
+            <pre><code>keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v -storepass android</code></pre>
+            <aside class="special">
+                <p><strong>Note</strong>: Keystore debug kamu berada pada file &#34;debug.keystore&#34;, dan berada pada direktory </p>
+                <p>&lt;home&gt;/.android/debug.keystore</p>
+                <p>Lihat <a href="https://developers.google.com/android/guides/client-auth" target="_blank">disini</a> Untuk mempelajari lebih detail tentang SHA1.</p>
+            </aside>
+            <h3>Tambahkan google-services.json kedalam projectmu</h3>
+            <p>Setelah menambahkan package name dan SHA1 dan Continue<strong>,</strong> browser kamu secara otomatis akan mendownloads a configuration file untuk seluruh yang penting kedalam project kamu. Copy file google-services.json kedalam <em><code>app</code></em> direktor project kamu.</p>
+            <h3>Dan google service plugin di projectmu</h3>
+            <p>Google-services digunakan untuk mengurai  data google-services.json untuk konfigurasi firebase. Masukkan kedalam build.gradle di direktory <em><code>app</code></em> dari project kamu:</p>
+            <pre><code>apply plugin: &#39;com.google.gms.google-services&#39;</code></pre>
+            <h3>Sync grdle build</h3>
+            <p>Untuk memastikan konfigurasi project grdle silahkan pilih <strong>Sync Project with Gradle Files </strong>(<img style="max-width: 21.31px" src="img/19a637a9cffe4b32.png">) dari Android Studio tool bar.</p>
+            <aside class="special">
+                <p><strong>Note</strong>: Untuk codelabs kali ini kamu hanya perlu klik sync pada toolbar andorid studioo.</p>
+            </aside>
 
-      <google-codelab-step label="Starting a conversation" duration="10">
-        <p>Users start the conversation with your Actions through <a href="https://developers.google.com/actions/discovery/" target="_blank">invocation</a>. (An example of an explicit invocation is a phrase like <em>&#34;Hey Google, talk to MovieTime&#34;</em>.) The Assistant then tries to match the user&#39;s input to one of your Actions. </p>
-<h3><strong>Create a welcome intent</strong></h3>
-<p>Every Actions project must have a <em>welcome intent</em> that acts as an entry point for users to start conversations. The welcome intent is triggered when users explicitly invoke an Action by uttering its name. </p>
-<p>By default, Dialogflow creates a welcome intent for us. For this codelab, you&#39;ll modify the welcome intent that users trigger when they say &#34;<em>Hey Google, talk to my test app</em>&#34;. </p>
-<p>To modify the welcome intent:</p>
-<ol type="1" start="1">
-<li>In the <strong>Intents</strong> page of the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, click on <strong>Default Welcome Intent</strong>.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/432d2df50a42e07c.png"></p>
-<ol type="1" start="2">
-<li>Delete all of the other text responses by clicking the trash icon next to each one.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/3af251ecd136c4a8.png"></p>
-<ol type="1" start="3">
-<li>Under the <strong>Responses </strong>section, click <strong>Enter a text response </strong>and type &#34;Welcome! What is your favorite color?&#34;</li>
-<li>Click <strong>Save</strong>. You should see a &#34;Intent saved&#34; notification briefly pop up.</li>
-</ol>
-<h3><strong>Test the welcome intent</strong></h3>
-<p>The Actions Console provides a web interface for testing called the <em>simulator</em>. This interface lets you simulate hardware devices and their settings. You can also access debug information such as the request and response that your fulfillment receives and sends.</p>
-<aside class="special"><p><strong>Tip: </strong>You can find the most recent information about using the Actions Console simulator in this <a href="https://developers.google.com/actions/tools/simulator" target="_blank">guide</a>. Please refer there if you run into any issues following the steps listed below.</p>
-</aside>
-<p>To test out your Action in the Actions console simulator:</p>
-<ol type="1" start="1">
-<li>In the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a> left navigation, click on <strong>Integrations</strong>. Then, click on <strong>Google Assistant &gt; Integration Settings</strong>.</li>
-<li>Click Test to update your Actions project and load it into the Actions Console simulator. (If you see a ‘Check auto-preview setting&#39; dialog, you can leave the ‘Auto-preview changes&#39; option is enabled, then click <strong>Continue</strong>.)  </li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/e96ac29642231a05.png"></p>
-<ol type="1" start="3">
-<li>To test your Action in the simulator, type &#34;Talk to my test app&#34; into the <strong>Input</strong> field and hit enter.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/51f21d3f54b44d1d.png"></p>
-<p>Notice that when your Action&#39;s welcome intent is invoked, the Assistant responds with the greeting message and prompts the user to provide their favorite color.  </p>
-<aside class="warning"><p>If you see &#34;Welcome&#34; as the response in the simulator, without a prompt for your favorite color, it may be because you didn&#39;t delete the other responses. Make sure to complete step 2 in the ‘Create a welcome intent&#39; section above.</p>
-</aside>
-<h3><strong>Debug your Action</strong></h3>
-<p>The panel on the right shows debugging information that&#39;s useful when testing your Action:</p>
-<ul>
-<li>In the <strong>REQUEST</strong> and <strong>RESPONSE</strong> tabs, you can see the request and response bodies in JSON between the Assistant and Dialogflow. </li>
-<li>In the <strong>AUDIO</strong> tab, you&#39;ll see your Action&#39;s speech response. You can change the response and update to hear how it sounds when synthesized into speech. </li>
-<li>The <strong>DEBUG</strong> and <strong>ERRORS</strong> tabs provide additional information to help you troubleshoot issues with your Action&#39;s response.</li>
-</ul>
-<p>In the next section of this codelab, we&#39;ll show how you can create dynamic, conversational responses.</p>
+        </google-codelab-step>
 
+        <google-codelab-step label="Aktifkan Authentication" duration="5">
+            <p>Yang pertama sebelum melanjutkan membuat aplikasi mari kita aktifkan firebase auth google plus .</p>
+            <h3>Firebase Realtime Database</h3>
+            <p>Sebelum user melakukan aktifitas di aplikasi ini user harus login terlebih dahulu untuk itu kita perlu melakukan konfigurasi rule Firebase Database ini.</p>
+            <p>Buka project di Firebase console, pilih <strong>Database</strong> dan kemudian buka tab <strong>Rules</strong>.Buat rules seperti berikut ini:</p>
+            <pre><code>{
+  &#34;rules&#34;: {
+    &#34;.read&#34;: &#34;auth != null&#34;,
+    &#34;.write&#34;: &#34;auth != null&#34;
+  }
+}</code></pre>
+            <p>Untuk mempelajari lebih lanjut tentang firebase rules ini silahkan buka dokumentasi  <a href="https://firebase.google.com/docs/database/security/quickstart" target="_blank">disini</a>.</p>
+            <h3>Konfigurasi Authentication APIs</h3>
+            <p>Sebelum mengakses firebase auth silahkan buka konfigurasi Authentication dan ikuti langkah - langkah berikut ini. </p>
+            <ol type="1" start="1">
+                <li>Buka <a href="http://console.firebase.google.com" target="_blank">Firebase console</a> Dan buka project kamu.</li>
+                <li>Buka tab<strong>Sign In Method</strong>.</li>
+                <li>Klik Toggle <strong>Google</strong> dan switch to enabled (biru)</li>
+                <li>Klik <strong>Save</strong> pada result dialog.</li>
+            </ol>
+            <h3>Tambahkan Firebase Auth dependency</h3>
+            <p>Firebase auth memungkinkan kita mengatur dan mengakses data user. Masukkan pada dependency  <code>app/build.gradle</code>.</p>
+            <h3>app/build.gradle</h3>
+            <pre><code>compile &#39;com.google.firebase:firebase-auth:9.4.0&#39;</code></pre>
+            <p>Dan pada  <code>WelcomeActivity</code> pada method checkAuth tambahkan code seperti dibawah ini:</p>
+            <h3>WelcomeActivity.java</h3>
+            <pre><code>// checkAuth
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+if (user != null) {
+    open(HomeActivity.class);
+} else {
+    open(LoginActivity.class);
+}
+</code></pre>
 
-      </google-codelab-step>
+            <p>Code di atas berfungsi untuk mengetahui apakah user telah login atau belum.</p>
+            <h3>LoginActivity.class</h3>
+            <p>Pada LoginPresenter di method loadConfig tambahkan code seperti berikut ini:</p>
+            <pre>
+              <code>
 
-      <google-codelab-step label="Create conversational responses" duration="10">
-        <p>Now that users have a way to start a conversation, let&#39;s keep the ball rolling.</p>
-<p>In this section, you&#39;ll learn the basics of setting up <em>slot-filling</em>, an important capability in Dialogflow that allows you to collect a set of values from the user through natural, back-and-forth conversation. This capability is useful if your Action needs a specific set of parameter values to fulfill the user&#39;s intent.</p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Parameters (Dialogflow):</strong>  Represents values that you want to extract from the user&#39;s phrases, similar to fields in a form.  For example, in a movie-finding Dialogflow intent, the parameters might be the movie name or showtime. If necessary, Dialogflow will send the user additional prompts until the parameter is extracted. </li>
-</ul>
-</aside>
-<p>To see slot-filling in action (no pun intended!), you&#39;ll create a new intent to see the color response: When the user speaks or types their response, Dialogflow will parse the user&#39;s input to extract the information your fulfillment needs—namely, the color—and send this to your fulfillment. Your fulfillment then auto-generates a lucky number to send back to the user.</p>
-<p>To implement the response, you&#39;ll need to add two components in the Dialogflow Console: a <em>Dialogflow intent</em> and a <em>Dialogflow webhook</em>. </p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Dialogflow intent</strong>: An object that maps user utterances to your agent&#39;s response. You can specify a static response directly within the intent or generate a dynamic response with a webhook.</li>
-<li><strong>Dialogflow webhook (fulfillment)</strong>: Code that responds to an HTTP request in a Dialogflow-specific messaging format; it contains the logic for handling intents and dynamically constructing responses to send to the user. </li>
-</ul>
-</aside>
-<p>You define Dialogflow intents in your agent to control how you want Dialogflow to process user requests. </p>
-<p>In the welcome intent, you asked the user for their favorite color.  In this codelab, you&#39;ll make an intent to capture this information. To do this, we&#39;ll use two specific sections of an intent—namely, <em>training phrases</em> and <em>parameters—to </em>parse the information we need from users.</p>
-<h3><strong>Create a Dialogflow intent</strong></h3>
-<p>To create the Dialogflow intent, do the following:</p>
-<ol type="1" start="1">
-<li>In the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, close the Google Assistant integration settings page if you have it opened. In the left navigation, click on <strong>Intents</strong> then click on <strong>Create Intent</strong>.</li>
-<li>In the intent name field at the top, type in &#34;favorite color&#34; as the name of your new intent.  Click <strong>Save</strong>.</li>
-</ol>
-<aside class="special"><p><strong>Tip: </strong>The intent name is case-sensitive. Make sure to type it in exactly as specified in the codelab instructions!</p>
-</aside>
-<ol type="1" start="3">
-<li>Under <strong>Training phrases</strong>, add the following user expressions by typing in the phrases below then clicking Enter on the keyboard:</li>
-</ol>
-<ul>
-<li><em>&#34;purple is my favorite&#34;</em></li>
-<li><em>&#34;black is my favorite color&#34;</em></li>
-<li><em>&#34;i love yellow&#34;</em></li>
-<li><em>&#34;Pink&#34;</em></li>
-<li><em>&#34;my favorite color is green&#34;</em></li>
-</ul>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Training phrase (Dialogflow): </strong>An example of how the user might express this intent. The examples you provide are used to train a machine learning model which allows the agent to match future inputs to the appropriate intent.</li>
-</ul>
-</aside>
-<ol type="1" start="4">
-<li>Under <strong>Action and parameters</strong>, create the prompt text to ask the user for their favorite color. You should see a line with &#34;color&#34; in the <strong>Parameter Name</strong> field. This parameter entry is automatically created by Dialogflow because it is able to auto-annotate words and phrases it recognizes as entities in the training phrases. On that line:</li>
-</ol>
-<ul>
-<li>Check the <strong>Required</strong> box.</li>
-<li>Click <strong>Define prompts...</strong></li>
-<li>Enter &#34;What&#39;s your favorite color?&#34; as a prompt.</li>
-<li>Click <strong>Close</strong>.</li>
-</ul>
-<p><img style="max-width: 624.00px" src="img/5a803c2a8edc0f93.png"></p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Entities (Dialogflow):</strong> Represents a category of things. Dialogflow comes with a catalog of System Entities (for example, &#34;color&#34; and  &#34;date&#34; are entities that Dialogflow &#34;knows about&#34;), but developers can define Custom Entities for domain-specific words and phrases. Dialogflow uses entities for extracting parameter values from natural language inputs. </li>
-</ul>
-</aside>
-<ol type="1" start="5">
-<li>Under the <strong>Fulfillment</strong> section in this page (not the left navigation), click <strong>Enable Fulfillment</strong>. You may need to expand the section by clicking on the down pointing arrow.</li>
-<li>Turn on <strong>Enable webhook call for this intent</strong>.</li>
-<li>Click <strong>Save</strong>.</li>
-</ol>
-<p>After you&#39;ve completed these steps, Dialogflow will automatically extract parameters it recognizes from user speech which triggers this intent; in this case, the color parameter. Once it obtains this information, Dialogflow makes it available to your fulfillment. </p>
-<p>In the next section of this codelab, we&#39;ll discuss how to create a Dialogflow webhook that processes the parameter value and handles the intent. </p>
+public void loadConfig() {
+    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(activity.getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build();
 
+    mGoogleApiClient = new GoogleApiClient.Builder(activity)
+            .enableAutoManage(activity, connectionResult -> {
+                Log.d(TAG, "loadConfig: google play services error.");
+            })
+            .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+            .build();
 
-      </google-codelab-step>
+    mAuth = FirebaseAuth.getInstance();
 
-      <google-codelab-step label="Implement a webhook" duration="11">
-        <p>In this section, we&#39;ll walk you through the steps of implementing a Dialogflow webhook that contains the logic to construct a conversational response. You&#39;ll also be able to try out your Action in real-time by using the Actions Console simulator. </p>
-<p>The Dialogflow webhook contains the logic for dynamically constructing response messages to send to the user. </p>
-<h3><strong>Build your webhook</strong></h3>
-<p>We&#39;ll use the Dialogflow Console&#39;s <a href="https://dialogflow.com/docs/how-tos/getting-started-fulfillment" target="_blank">Inline Editor</a> to build and deploy the webhook. To build a webhook for your Action, do the following:</p>
-<ol type="1" start="1">
-<li>In the left navigation, click on <strong>Fulfillment</strong>.</li>
-<li>Toggle <strong>Inline Editor</strong> to enabled.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/98b20a2f25f954c6.png"></p>
-<ol type="1" start="3">
-<li>Replace the contents of <strong>index.js</strong> with the following code:</li>
-</ol>
-<h3><a href="https://github.com/actions-on-google/codelabs-nodejs/blob/master/level1-complete/functions/index.js" target="_blank">index.js</a></h3>
-<pre><code>&#39;use strict&#39;;
-
-// Import the Dialogflow module from the Actions on Google client library.
-const {dialogflow} = require(&#39;actions-on-google&#39;);
-
-// Import the firebase-functions package for deployment.
-const functions = require(&#39;firebase-functions&#39;);
-
-// Instantiate the Dialogflow client.
-const app = dialogflow({debug: true});
-
-// Handle the Dialogflow intent named &#39;favorite color&#39;.
-// The intent collects a parameter named &#39;color&#39;.
-app.intent(&#39;favorite color&#39;, (conv, {color}) =&gt; {
-    const luckyNumber = color.length;
-    // Respond with the user&#39;s lucky number and end the conversation.
-    conv.close(&#39;Your lucky number is &#39; + luckyNumber);
-});
-
-// Set the DialogflowApp object to handle the HTTPS POST request.
-exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);</code></pre>
-<ol type="1" start="5">
-<li>Click <strong>Deploy</strong>. You&#39;ll need to wait on this page a couple minutes for Dialogflow to provision and deploy your webhook code. When the code is successfully deployed, you&#39;ll see an updated &#34;Last deployed&#34; timestamp next to the <strong>Deploy</strong> button.</li>
-</ol>
-<h3><strong>Understand the code</strong></h3>
-<p>The code for the webhook is implemented in <a href="https://www.javascript.com/" target="_blank">JavaScript</a>. When you use Dialogflow&#39;s inline editor, it deploys your webhook code on a managed environment in the cloud using <a href="https://firebase.google.com/docs/functions/" target="_blank">Cloud Functions for Firebase</a>. </p>
-<p>The webhook code uses the <a href="https://github.com/actions-on-google/actions-on-google-nodejs" target="_blank">Actions on Google Node.js client library</a> to respond to HTTP requests that the Assistant sends to your webhook. The library allows you to create a <a href="https://actions-on-google.github.io/actions-on-google-nodejs/interfaces/dialogflow.dialogflowapp.html" target="_blank"><code>DialogflowApp</code></a> object, which acts as a wrapper for the Dialogflow API. </p>
-<p>In this case, an <code>app</code> variable of the <code>DialogflowApp</code> object type is created. The <code>app.intent()</code> function is used to declare a callback to handle the ‘favorite color&#39; intent. </p>
-<p>The callback receives two important arguments:</p>
-<ul>
-<li>A <a href="https://actions-on-google.github.io/actions-on-google-nodejs/classes/dialogflow.dialogflowconversation.html" target="_blank"><code>Dialogflow</code><code>Conversation</code></a> object. This is a client library abstraction of the state of the dialog, and includes properties which represent values of the incoming request to our webhook, such as the current active Dialogflow contexts, the surface capabilities of the user device, etc.</li>
-<li>A Dialogflow <a href="https://actions-on-google.github.io/actions-on-google-nodejs/interfaces/dialogflow.parameters.html" target="_blank"><code>Parameters</code></a> object. This is a JavaScript Object representation of the parameter values collected in the related intent. (Remember how in the previous section  you defined the parameter name &#34;color&#34; to tell Dialogflow to extract a value corresponding to the <code>sys.color</code> entity? The same parameter name is used by the client library to represent its value.)</li>
-</ul>
-<aside class="special"><p><strong>Tip: </strong>If you change the parameter name in the Dialogflow Console, remember to also update your variable name in code!</p>
-</aside>
-<p>The callback generates the user&#39;s lucky number by determining the length of the word for their color (for example, the 6-character word &#34;orange&#34; would return a favorite color of 6). </p>
-<p>It then uses the <a href="https://actions-on-google.github.io/actions-on-google-nodejs/classes/conversation.conversation-1.html#close" target="_blank"><code>close</code></a> method of the <code>Conversation</code> object parameter to respond to the user and end the conversation. The response is a simple string (e.g. &#34;Your lucky number is 6&#34;).</p>
-<p><img style="max-width: 624.00px" src="img/4b4c7097b4067c95.png"></p>
-<p>The figure above shows how the variable <strong>color </strong>on line 21 of the webhook implementation uses the parameter name we defined earlier in the Dialogflow console.  For example, if the user said <em>&#34;My favorite color is green&#34;</em>, then our variable <strong>color </strong>on line 21 will have the value  &#34;green&#34;.</p>
-<h3><strong>Test your Action</strong></h3>
-<aside class="special"><p><strong>Tip: </strong>You can find the most recent information about using the Actions Console simulator in this <a href="https://developers.google.com/actions/tools/simulator" target="_blank">guide</a>. Please refer there if you run into any issues following the steps listed below.</p>
-</aside>
-<p>To test your Action:</p>
-<ol type="1" start="1">
-<li>Open the <a href="https://console.actions.google.com/" target="_blank">Actions Console</a> and select your Actions project for this codelab. </li>
-<li>Click on <strong>Simulator</strong> in the left navigation. Click on the <strong>X</strong> button at the top of the output window. This exits you from any conversation you might have started earlier in the simulator. </li>
-<li>Type &#34;Talk to my test app&#34; into the <strong>Input</strong> field and hit enter.</li>
-</ol>
-<p><img style="max-width: 624.00px" src="img/d2e5cfb12dd17065.png"></p>
-<p>The simulator will then perform an explicit invocation by calling your welcome intent. Once you&#39;re mid-conversation, you can trigger the ‘favorite color&#39; custom intent by providing a color. For example, try testing with the following phrases:</p>
-<ul>
-<li><em>&#34;Red&#34;</em></li>
-<li><em>&#34;I love green.&#34;</em></li>
-<li><em>&#34;My favorite is pink.&#34; </em></li>
-</ul>
-
-
-      </google-codelab-step>
-
-      <google-codelab-step label="Next steps" duration="2">
-        <p><strong>Congratulations!</strong></p>
-<p>You now know the basics of building conversational user interfaces with Actions on Google.</p>
-<h3 class="checklist"><strong>What we&#39;ve covered</strong></h3>
-<ul class="checklist">
-<li>How to set up an Actions project using the Actions Console.</li>
-<li>How to create a welcome intent so that users can start a conversation with your Action.</li>
-<li>How to create conversational responses using Dialogflow intents and a custom webhook.</li>
-<li>How to test your Action in real-time using the Actions Console simulator.</li>
-</ul>
-<h3><strong>What&#39;s next</strong></h3>
-<p>In the <a href="https://codelabs.developers.google.com/codelabs/actions-2/index.html" target="_blank">next codelab</a>, you&#39;ll make further refinements to your Actions project. You&#39;ll also learn more about developing webhooks, adding additional actions, and implementing contextual state management.</p>
-<p>You can also explore these resources for learning about Actions on Google:</p>
-<ul>
-<li><a href="http://actions.google.com" target="_blank">actions.google.com</a>: The official documentation site for Actions on Google.</li>
-<li><a href="https://github.com/actions-on-google/" target="_blank">Actions on Google GitHub repo</a>: Sample code and libraries.</li>
-<li><a href="https://dialogflow.com/" target="_blank">Dialogflow.com</a>: The official documentation site for Dialogflow.</li>
-<li><a href="https://plus.google.com/communities/105684267327487893574" target="_blank">Actions on Google Developers</a>: The official Google+ community for developers working with Actions on Google.</li>
-</ul>
-<p>Follow us on Twitter <a href="https://twitter.com/ActionsOnGoogle" target="_blank">@ActionsOnGoogle</a> to stay tuned to our latest announcements, and tweet to <a href="https://twitter.com/hashtag/AoGDevs?src=hash" target="_blank">#AoGDevs</a> to share what you have built!</p>
-<h3><strong>Feedback survey</strong></h3>
-<p>Before you go, <a href="https://docs.google.com/forms/d/1dXNrj0HFP5vemXVnRvCicdkNmENM4UPlsmPhOV7klfs/edit?usp=sharing" target="_blank">please fill out this form</a> to let us know how we&#39;re doing!</p>
-
-
-      </google-codelab-step>
-
-  </google-codelab>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-49880327-14', 'auto');
-
-    (function() {
-      var gaCodelab = '';
-      if (gaCodelab) {
-        ga('create', gaCodelab, 'auto', {name: 'codelab'});
-      }
-
-      var gaView;
-      var parts = location.search.substring(1).split('&');
-      for (var i = 0; i < parts.length; i++) {
-        var param = parts[i].split('=');
-        if (param[0] === 'viewga') {
-          gaView = param[1];
-          break;
+    mAuthListener = firebaseAuth -> {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            mvpView.successLogin();
+            Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+        } else {
+            Log.d(TAG, "onAuthStateChanged:signed_out");
         }
-      }
-      if (gaView && gaView !== gaCodelab) {
-        ga('create', gaView, 'auto', {name: 'view'});
-      }
-    })();
-  </script>
+    };
+
+    mAuth.addAuthStateListener(mAuthListener);
+}
+              </code>
+            </pre>
+            <p>Pada firebaseAuthWithGoogle tambahkan code seperti berikut ini.</p>
+            <pre><code>//firebaseAuthWithGoogle
+public void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+    showProgressDialog();
+
+    AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+    mAuth.signInWithCredential(credential)
+            .addOnCompleteListener(activity, task -> {
+                Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "signInWithCredential", task.getException());
+                }
+                hideProgressDialog();
+            });
+}
+</code></pre>
+        <p>Kemudian untuk eksekusi login silahkan tambahkan code berikut ini pada method signIn:</p>
+        <pre>
+          <code>
+public void signIn() {
+    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+    mvpView.startResult(signInIntent, RC_SIGN_IN);
+}</code>
+        </pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Firebase Realtime Database" duration="1">
+            <h3>Firebase Realtime Database dependency</h3>
+            <p>Untuk menggunakan firebase database silahkan tambahkan dependency berikut ini pada app/build.gradle:</p>
+            <h3>Dependency in app/build.gradle</h3>
+            <pre><code>compile &#39;com.google.firebase:firebase-database:9.4.0&#39;</code></pre>
+            <p>Untuk database ini akan kita gunakan untuk post data ke server pada kali ini silahkan buka NewIklanPresenter.class tambahkan code berikut ini</p>
+<pre><code>
+public void postNewIklan(String judul, String harga, String lokasi, String description, String url_photo) {
+    getMvpView().startLoading();
+    PostNewIklan postNewIklan = new PostNewIklan(getUid(), judul, harga, lokasi, description, url_photo);
+    String key = mDatabase.child("iklan").push().getKey();
+    Map<String, Object> postValues = postNewIklan.toMap();
+
+    Map<String, Object> childUpdates = new HashMap<>();
+    childUpdates.put("/iklan/" + key, postValues);
+    childUpdates.put("/users/iklan/" + getUid() + "/" + key, postValues);
+
+    mDatabase.updateChildren(childUpdates)
+            .addOnCompleteListener(getMvpView().getActivity(), task -> {
+                if (task.isComplete()){
+                    getMvpView().stopLoading();
+                    getMvpView().finishAddNewIklan();
+                }
+            });
+}
+  </code>
+</pre>
+        </google-codelab-step>
+
+        <google-codelab-step label="Firebase REST Api" duration="0">
+        <p>Pada Firebase Rest api ini akan kita gunakan untuk membaca data iklan. Untuk mengimplementasikan nya silahkan buka class Endpoint.java tambahkna code seperti berikut ini.</p>
+        <h3>Endpoint.java</h3>
+        <pre><code>public class Endpoint {
+    private static String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public static final String MAIN_URL = "isikan sesuai url project firebase kamu";
+    private static final String AUTH = "?auth=screet code";
+    public static final String IKLAN = MAIN_URL + "iklan.json" + AUTH;
+    public static final String IKLAN_SAYA = MAIN_URL + "users/iklan/" + uid + ".json" + AUTH;
+}
+        </code></pre>
+        <h3>HomeFragmentPresenter.java</h3>
+        <p>Pada case kali ini kita akan mengambil data list iklan pada HomeFragmentPresenter.java tambahkan code seperti berikut ini.</p>
+        <pre><code>public void loadCommonIklan() {
+    getMvpView().startLoading();
+    getSubscraiber().add(
+            getIklan()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::onResponse, this::onError)
+    );
+}
+        </code></pre>
+        <p>Selanjutnya kita parsing data yang telah kita terima dan tambahkan code berikut ini.</p>
+        <pre><code>private void parseData(String json) {
+    data.clear();
+    JSONObject jobject = null;
+    try {
+        jobject = new JSONObject(json);
+        if (jobject.names().length() == 0) {
+            getMvpView().showMessage("Belumada iklan.");
+        } else {
+            for (int i = 0; i < jobject.names().length(); i++) {
+                String value = jobject.get(jobject.names().getString(i)).toString();
+                IklanModel iklanData = getParser().fromJson(value, IklanModel.class);
+                data.add(iklanData);
+                setAdapter();
+            }
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+}
+        </code></pre>
+        </google-codelab-step>
+
+        <google-codelab-step label="Report Crashes" duration="1">
+        <p>Firebase creas reporting ini membantu kita untuk menangkap error pada aplikasi dan membuat log nya dengan ini akan memudahkan kita untuk proses pengembangan aplikasi apa bila aplikasi kita di akses oleh banyak device. Untuk menggunakan silahkan tambahkan dependency berikut ini. </p>
+        <pre><code>compile 'com.google.firebase:firebase-crash:10.0.0'</code></pre>
+        <p>Contoh penggunaan dari crash reporting ini bisa dilihat di DetailIklanActivity.class</p>
+        <pre><code>try {
+    IklanModel data = getIntent().getParcelableExtra("data");
+    String[] mImage = data.getUrl_image().split(",");
+    Glide.with(this).load(mImage[0]).centerCrop().into(img);
+    judul.setText(data.getJudul());
+    harga.setText(CurrencyHelper.format(data.getHarga()));
+    description.setText(data.getDescription());
+    getSupportActionBar().setTitle(data.getJudul());
+}catch (Exception e){
+    FirebaseCrash.logcat(Log.DEBUG, "Error set data detail.", e.getMessage());
+}</code></pre>
+<p>Pada setiap action di aplikasi itu memiliki Exception nah exception ini biasa nya itu memiliki pesan error nah dengan mendapatkan report dari exception ini akan bisa memudahkan kita untuk menganalisa kesalahan dari aplikasi yang kita buat.</p>
+        </google-codelab-step>
+
+        <google-codelab-step label="Selamat Codelab Selesai!" duration="0">
+            <p>Selamat anda telah selesai mengikuti codelan kali ini berikut ini adalah materi yang kita pelajari.</p>
+            <h3 class="checklist">Ringkasa</h3>
+            <ul class="checklist">
+                <li>Firebase Authentication</li>
+                <li>Firebase Realtime Database</li>
+                <li>Firebase Rest API</li>
+                <li>Firebase Crash Reporting</li>
+            </ul>
+            <h3>Next Steps</h3>
+            <ul>
+                <li>Gunakan Firebase pada aplikasi Android kamu.</li>
+            </ul>
+            <h3>Learn More</h3>
+            <ul>
+                <li><a href="https://firebase.google.com" target="_blank">firebase.google.com</a></li>
+            </ul>
+
+        </google-codelab-step>
+
+    </google-codelab>
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-49880327-14', 'auto');
+
+        (function() {
+            var gaCodelab = '';
+            if (gaCodelab) {
+                ga('create', gaCodelab, 'auto', {
+                    name: 'codelab'
+                });
+            }
+
+            var gaView;
+            var parts = location.search.substring(1).split('&');
+            for (var i = 0; i < parts.length; i++) {
+                var param = parts[i].split('=');
+                if (param[0] === 'viewga') {
+                    gaView = param[1];
+                    break;
+                }
+            }
+            if (gaView && gaView !== gaCodelab) {
+                ga('create', gaView, 'auto', {
+                    name: 'view'
+                });
+            }
+        })();
+    </script>
 
 </body>
+
 </html>
