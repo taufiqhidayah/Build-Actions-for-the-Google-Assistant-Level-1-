@@ -155,11 +155,11 @@
 <ol type="1" start="1">
 <li>Pada Halaman <strong>Intents</strong>  <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, click  <strong>Default Welcome Intent</strong>.</li>
 </ol>
-<p><img style="max-width: 624.00px" src="img/432d2df50a42e07c.png"></p>
+<p><img style="max-width: 624.00px" src="img/11.png"></p>
 <ol type="1" start="2">
 <li>Hapus semua response teks lainnya dengan mengklik ikon tempat sampah di samping masing-masing..</li>
 </ol>
-<p><img style="max-width: 624.00px" src="img/3af251ecd136c4a8.png"></p>
+<p><img style="max-width: 624.00px" src="img/12.png"></p>
 <ol type="1" start="3">
 <li>dibawah <strong>Responses </strong>, click <strong>Enter text response </strong>ketik &#34;Welcome! What is your favorite color?&#34;</li>s
 <li>Click <strong>Save</strong>.  &#34;Intent saved&#34; </li>
@@ -177,7 +177,7 @@
 <ol type="1" start="3">
 <li>ketik &#34;Talk to my test app&#34;kedalam <strong>Input</strong> kemudian tekan enter.</li>
 </ol>
-<p><img style="max-width: 624.00px" src="img/51f21d3f54b44d1d.png"></p>
+<p><img style="max-width: 624.00px" src="img/14.png"></p>
 
 <aside class="warning"><p>If you see &#34;Welcome&#34; as the response in the simulator, without a prompt for your favorite color, it may be because you didn&#39;t delete the other responses. Make sure to complete step 2 in the ‘Create a welcome intent&#39; section above.</p>
 </aside>
@@ -187,33 +187,17 @@
       </google-codelab-step>
     
  <google-codelab-step label="Create conversational responses" duration="10">
-        <p>Now that users have a way to start a conversation, let&#39;s keep the ball rolling.</p>
-<p>In this section, you&#39;ll learn the basics of setting up <em>slot-filling</em>, an important capability in Dialogflow that allows you to collect a set of values from the user through natural, back-and-forth conversation. This capability is useful if your Action needs a specific set of parameter values to fulfill the user&#39;s intent.</p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Parameters (Dialogflow):</strong>  Represents values that you want to extract from the user&#39;s phrases, similar to fields in a form.  For example, in a movie-finding Dialogflow intent, the parameters might be the movie name or showtime. If necessary, Dialogflow will send the user additional prompts until the parameter is extracted. </li>
-</ul>
-</aside>
-<p>To see slot-filling in action (no pun intended!), you&#39;ll create a new intent to see the color response: When the user speaks or types their response, Dialogflow will parse the user&#39;s input to extract the information your fulfillment needs—namely, the color—and send this to your fulfillment. Your fulfillment then auto-generates a lucky number to send back to the user.</p>
-<p>To implement the response, you&#39;ll need to add two components in the Dialogflow Console: a <em>Dialogflow intent</em> and a <em>Dialogflow webhook</em>. </p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Dialogflow intent</strong>: An object that maps user utterances to your agent&#39;s response. You can specify a static response directly within the intent or generate a dynamic response with a webhook.</li>
-<li><strong>Dialogflow webhook (fulfillment)</strong>: Code that responds to an HTTP request in a Dialogflow-specific messaging format; it contains the logic for handling intents and dynamically constructing responses to send to the user. </li>
-</ul>
-</aside>
-<p>You define Dialogflow intents in your agent to control how you want Dialogflow to process user requests. </p>
-<p>In the welcome intent, you asked the user for their favorite color.  In this codelab, you&#39;ll make an intent to capture this information. To do this, we&#39;ll use two specific sections of an intent—namely, <em>training phrases</em> and <em>parameters—to </em>parse the information we need from users.</p>
+      
 <h3><strong>Create a Dialogflow intent</strong></h3>
-<p>To create the Dialogflow intent, do the following:</p>
+<p>Langkah-langkah:</p>
 <ol type="1" start="1">
-<li>In the <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, close the Google Assistant integration settings page if you have it opened. In the left navigation, click on <strong>Intents</strong> then click on <strong>Create Intent</strong>.</li>
-<li>In the intent name field at the top, type in &#34;favorite color&#34; as the name of your new intent.  Click <strong>Save</strong>.</li>
+<li>Pada <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, tutup halaman pengaturan integrasi Asisten Google jika Anda telah membukanya. Di navigasi sebelah kiri, klik Intents lalu klik Create Intent. <strong>Intents</strong> then click on <strong>Create Intent</strong>.</li>
+<li> Di bidang nama maksud di bagian atas, ketik &#34;favorite color&#34; sebagai nama maksud baru Anda. Klik  <strong>Save</strong>.</li>
 </ol>
-<aside class="special"><p><strong>Tip: </strong>The intent name is case-sensitive. Make sure to type it in exactly as specified in the codelab instructions!</p>
+<aside class="special"><p><strong>Tip: </strong>Nama intent  case-sensitive.</p>
 </aside>
 <ol type="1" start="3">
-<li>Under <strong>Training phrases</strong>, add the following user expressions by typing in the phrases below then clicking Enter on the keyboard:</li>
+<li>Dibawah <strong>Training frase</strong>,tambahkan ekspresi pengguna berikut dengan mengetikkan frasa di bawah lalu mengklik Enter pada keyboard:</li>
 </ol>
 <ul>
 <li><em>&#34;purple is my favorite&#34;</em></li>
@@ -222,13 +206,9 @@
 <li><em>&#34;Pink&#34;</em></li>
 <li><em>&#34;my favorite color is green&#34;</em></li>
 </ul>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Training phrase (Dialogflow): </strong>An example of how the user might express this intent. The examples you provide are used to train a machine learning model which allows the agent to match future inputs to the appropriate intent.</li>
-</ul>
-</aside>
+
 <ol type="1" start="4">
-<li>Under <strong>Action and parameters</strong>, create the prompt text to ask the user for their favorite color. You should see a line with &#34;color&#34; in the <strong>Parameter Name</strong> field. This parameter entry is automatically created by Dialogflow because it is able to auto-annotate words and phrases it recognizes as entities in the training phrases. On that line:</li>
+<li>dibawah <strong>Action and parameters</strong>, buat teks cepat untuk menanyakan warna favorit kepada pengguna. Anda harus melihat garis dengan &#34;color&#34; dalam <strong>Parameter Name</strong> field.Entri parameter ini secara otomatis dibuat oleh Dialogflow karena ia mampu membuat anotasi otomatis kata dan frasa yang dikenali sebagai entitas dalam frasa pelatihan. Pada baris itu:</li>
 </ol>
 <ul>
 <li>Check the <strong>Required</strong> box.</li>
@@ -237,85 +217,71 @@
 <li>Click <strong>Close</strong>.</li>
 </ul>
 <p><img style="max-width: 624.00px" src="img/5a803c2a8edc0f93.png"></p>
-<aside class="special"><p><strong>Key terms:</strong></p>
-<ul>
-<li><strong>Entities (Dialogflow):</strong> Represents a category of things. Dialogflow comes with a catalog of System Entities (for example, &#34;color&#34; and  &#34;date&#34; are entities that Dialogflow &#34;knows about&#34;), but developers can define Custom Entities for domain-specific words and phrases. Dialogflow uses entities for extracting parameter values from natural language inputs. </li>
-</ul>
-</aside>
 <ol type="1" start="5">
-<li>Under the <strong>Fulfillment</strong> section in this page (not the left navigation), click <strong>Enable Fulfillment</strong>. You may need to expand the section by clicking on the down pointing arrow.</li>
+<li>Dibawah dari <strong>Fulfillment</strong> bagian di halaman ini (bukan navigasi kiri), click <strong>Enable Fulfillment</strong>. Anda mungkin perlu memperluas bagian dengan mengklik panah menunjuk ke bawah..</li>
 <li>Turn on <strong>Enable webhook call for this intent</strong>.</li>
 <li>Click <strong>Save</strong>.</li>
 </ol>
-<p>After you&#39;ve completed these steps, Dialogflow will automatically extract parameters it recognizes from user speech which triggers this intent; in this case, the color parameter. Once it obtains this information, Dialogflow makes it available to your fulfillment. </p>
-<p>In the next section of this codelab, we&#39;ll discuss how to create a Dialogflow webhook that processes the parameter value and handles the intent. </p>
+
+<p>Setelah Anda menyelesaikan langkah-langkah ini, Dialogflow akan secara otomatis mengekstrak parameter yang dikenali dari ucapan pengguna yang memicu maksud ini; dalam hal ini, parameter warna. Setelah memperoleh informasi ini, Dialogflow membuatnya tersedia untuk Fulfillment Anda</p>
+      </google-codelab-step>
+     <google-codelab-step label="Implement a webhook" duration="11">
+        <p>Di bagian ini, kami akan memandu Anda melalui langkah-langkah menerapkan webhook Dialogflow yang berisi logika untuk membuat respons percakapan. Anda juga dapat mencoba Aksi Anda secara real-time dengan menggunakan simulator Actions Console. </p>
+
+<h3><strong>Build your webhook</strong></h3>
+<p>Kita kan menggunakan dialogflow console <a href="https://dialogflow.com/docs/how-tos/getting-started-fulfillment" target="_blank">Inline Editor</a> to build and deploy the webhook. Dengan langkah :</p>
+<ol type="1" start="1">
+<li>Pada bagian kiri , click on <strong>Fulfillment</strong>.</li>
+<li>Ubah  <strong>Inline Editor</strong> ke enabled.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/15.png"></p>
+<ol type="1" start="3">
+<li>Ubah code di <strong>index.js</strong> sebagai berikut:</li>
+</ol>
+<h3><a href="https://github.com/actions-on-google/codelabs-nodejs/blob/master/level1-complete/functions/index.js" target="_blank">index.js</a></h3>
+<pre><code>&#39;use strict&#39;;
+
+// Import the Dialogflow module from the Actions on Google client library.
+const {dialogflow} = require(&#39;actions-on-google&#39;);
+
+// Import the firebase-functions package for deployment.
+const functions = require(&#39;firebase-functions&#39;);
+
+// Instantiate the Dialogflow client.
+const app = dialogflow({debug: true});
+
+// Handle the Dialogflow intent named &#39;favorite color&#39;.
+// The intent collects a parameter named &#39;color&#39;.
+app.intent(&#39;favorite color&#39;, (conv, {color}) =&gt; {
+    const luckyNumber = color.length;
+    // Respond with the user&#39;s lucky number and end the conversation.
+    conv.close(&#39;Your lucky number is &#39; + luckyNumber);
+});
+
+// Set the DialogflowApp object to handle the HTTPS POST request.
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);</code></pre>
+<ol type="1" start="5">
+<li>Click <strong>Deploy</strong>. You&#39;ll need to wait on this page a couple minutes for Dialogflow to provision and deploy your webhook code. When the code is successfully deployed, you&#39;ll see an updated &#34;Last deployed&#34; timestamp next to the <strong>Deploy</strong> button.</li>
+</ol>
+<h3><strong>Test your Action</strong></h3>
+<aside class="special"><p><strong>Tip: </strong>You can find the most recent information about using the Actions Console simulator in this <a href="https://developers.google.com/actions/tools/simulator" target="_blank">guide</a>. Please refer there if you run into any issues following the steps listed below.</p>
+</aside>
+<p>To test your Action:</p>
+<ol type="1" start="1">
+<li>Buka  <a href="https://console.actions.google.com/" target="_blank">Actions Console</a> dan pilih projek anda. </li>
+<li>ketik &#34;Talk to my test app&#34; kedalam <strong>Input</strong> dan tekan enter.</li>
+</ol>
+<p><img style="max-width: 624.00px" src="img/17.png"></p>
+<p>Simulator kemudian akan melakukan pemanggilan eksplisit dengan memanggil niat selamat datang Anda. Setelah percakapan di tengah, Anda dapat memicu niat khusus favorit warna dengan memberikan warna. Misalnya, coba pengujian dengan frasa berikut:</p>
+<ul>
+<li><em>&#34;Red&#34;</em></li>
+<li><em>&#34;I love green.&#34;</em></li>
+<li><em>&#34;My favorite is pink.&#34; </em></li>
+</ul>
 
 
       </google-codelab-step>
-    
-        <google-codelab-step label="Firebase REST Api" duration="0">
-        <p>Pada Firebase Rest api ini akan kita gunakan untuk membaca data iklan. Untuk mengimplementasikan nya silahkan buka class Endpoint.java tambahkna code seperti berikut ini.</p>
-        <h3>Endpoint.java</h3>
-        <pre><code>public class Endpoint {
-    private static String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    public static final String MAIN_URL = "isikan sesuai url project firebase kamu";
-    private static final String AUTH = "?auth=screet code";
-    public static final String IKLAN = MAIN_URL + "iklan.json" + AUTH;
-    public static final String IKLAN_SAYA = MAIN_URL + "users/iklan/" + uid + ".json" + AUTH;
-}
-        </code></pre>
-        <h3>HomeFragmentPresenter.java</h3>
-        <p>Pada case kali ini kita akan mengambil data list iklan pada HomeFragmentPresenter.java tambahkan code seperti berikut ini.</p>
-        <pre><code>public void loadCommonIklan() {
-    getMvpView().startLoading();
-    getSubscraiber().add(
-            getIklan()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::onResponse, this::onError)
-    );
-}
-        </code></pre>
-        <p>Selanjutnya kita parsing data yang telah kita terima dan tambahkan code berikut ini.</p>
-        <pre><code>private void parseData(String json) {
-    data.clear();
-    JSONObject jobject = null;
-    try {
-        jobject = new JSONObject(json);
-        if (jobject.names().length() == 0) {
-            getMvpView().showMessage("Belumada iklan.");
-        } else {
-            for (int i = 0; i < jobject.names().length(); i++) {
-                String value = jobject.get(jobject.names().getString(i)).toString();
-                IklanModel iklanData = getParser().fromJson(value, IklanModel.class);
-                data.add(iklanData);
-                setAdapter();
-            }
-        }
-    } catch (JSONException e) {
-        e.printStackTrace();
-    }
-}
-        </code></pre>
-        </google-codelab-step>
 
-        <google-codelab-step label="Report Crashes" duration="1">
-        <p>Firebase creas reporting ini membantu kita untuk menangkap error pada aplikasi dan membuat log nya dengan ini akan memudahkan kita untuk proses pengembangan aplikasi apa bila aplikasi kita di akses oleh banyak device. Untuk menggunakan silahkan tambahkan dependency berikut ini. </p>
-        <pre><code>compile 'com.google.firebase:firebase-crash:10.0.0'</code></pre>
-        <p>Contoh penggunaan dari crash reporting ini bisa dilihat di DetailIklanActivity.class</p>
-        <pre><code>try {
-    IklanModel data = getIntent().getParcelableExtra("data");
-    String[] mImage = data.getUrl_image().split(",");
-    Glide.with(this).load(mImage[0]).centerCrop().into(img);
-    judul.setText(data.getJudul());
-    harga.setText(CurrencyHelper.format(data.getHarga()));
-    description.setText(data.getDescription());
-    getSupportActionBar().setTitle(data.getJudul());
-}catch (Exception e){
-    FirebaseCrash.logcat(Log.DEBUG, "Error set data detail.", e.getMessage());
-}</code></pre>
-<p>Pada setiap action di aplikasi itu memiliki Exception nah exception ini biasa nya itu memiliki pesan error nah dengan mendapatkan report dari exception ini akan bisa memudahkan kita untuk menganalisa kesalahan dari aplikasi yang kita buat.</p>
-        </google-codelab-step>
 
         <google-codelab-step label="Selamat Codelab Selesai!" duration="0">
             <p>Selamat anda telah selesai mengikuti codelan kali ini berikut ini adalah materi yang kita pelajari.</p>
