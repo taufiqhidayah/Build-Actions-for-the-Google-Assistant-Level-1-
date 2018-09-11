@@ -20,18 +20,18 @@
 
 <body unresolved class="fullbleed">
 
-    <google-codelab title="GDG Joga Android Codelab" environment="web" feedback-link="https://github.com/firebase/friendlychat/issues">
+    <google-codelab title="Google I/O Extended Surabaya" environment="web" feedback-link="https://github.com/firebase/friendlychat/issues">
 
         <google-codelab-step label="Overview" duration="2">
-            <p><img style="max-width: 201.00px" src="img/1.png"><span>  </span><img style="max-width: 201.00px" src="img/olxlite_1.png"><span>  </span><img style="max-width: 201.00px" src="img/olxlite_2.png"></p>
-            <p>Image: OLXLite Android app.</p>
+            <p><img style="max-width: 201.00px" src="img/1.png"></p>
+            <p>Image: Google Assistant.</p>
             <p>Selamat datang pada Codelabs kali ini kita akan belajar bagaimana cara membuat action pada google Assistant. </p>
             <h3>Apa yang akan kamu bikin?</h3>
             <ul> 
-                <li>Pengguna dapat memulai percakapan dengan secara eksplisit memanggil Aksi Anda berdasarkan nama, yang kemudian merespons dengan pesan ucapan.</li>
-                <li>Setelah berbincang, pengguna diminta untuk memberikan warna favorit mereka. Your Action mem-parsing input pengguna untuk mengekstrak informasi yang dibutuhkan (yaitu, parameter warna).</li>
-                <li>Jika warna disediakan, Tindakan Anda memproses parameter warna untuk membuat "angka keberuntungan" secara otomatis untuk mengirim kembali ke pengguna dan percakapan berakhir.</li>
-                <li>Jika tidak ada warna yang disediakan, Tindakan Anda akan mengirimkan petunjuk tambahan kepada pengguna sampai parameter tersebut diekstraksi.</li>
+                <li>Pengguna dapat memulai percakapan dengan secara eksplisit memanggil Aksi  berdasarkan nama, yang kemudian merespons dengan pesan ucapan.</li>
+                <li>Setelah itu pengguna diminta untuk memberikan warna favorit mereka. Action kamu akan mem-parsing input pengguna untuk mengekstrak informasi yang dibutuhkan (yaitu, parameter warna).</li>
+                <li>Jika warna disediakan, Action akan memproses parameter warna untuk membuat "angka keberuntungan" secara otomatis untuk mengirim kembali ke pengguna dan percakapan berakhir.</li>
+                <li>Jika tidak ada warna yang disediakan, Action akan mengirimkan petunjuk tambahan kepada pengguna sampai parameter tersebut diekstraksi.</li>
                 <li>Pengguna dapat meninggalkan percakapan secara eksplisit kapan saja.</li>
 
             </ul>
@@ -78,7 +78,7 @@
 <p>Mari kita lihat apa yang terjadi di balik layar selama percakapan:</p>
 <p><img style="max-width: 624.00px" src="img/3.png"></p>
 <ul>
-<li>Tindakan Anda sepenuhnya dijalankan di awan, bahkan ketika pengguna berbicara dengan mereka di ponsel, perangkat rumah pintar, atau jam tangan mereka. </li>
+<li>Action Anda sepenuhnya dijalankan di awan, bahkan ketika pengguna berbicara dengan mereka di ponsel, perangkat rumah pintar, atau jam tangan mereka. </li>
 <li>Setiap Tindakan mendukung maksud tertentu dan memiliki pemenuhan yang sesuai yang memproses maksud tersebut.</li>
 <li>Perangkat pengguna mengirimkan ucapan pengguna ke Asisten Google, yang mengarahkannya ke layanan pemenuhan Anda melalui permintaan HTTP POST..</li>
 <li>Pemenuhan Anda menghasilkan respons yang relevan dan mengirimkannya kembali ke Asisten, yang akhirnya mengembalikannya kepada pengguna.</li>
@@ -186,9 +186,9 @@
 
       </google-codelab-step>
     
- <google-codelab-step label="Create conversational responses" duration="10">
+ <google-codelab-step label="Membuat respon percakapan" duration="10">
       
-<h3><strong>Create a Dialogflow intent</strong></h3>
+<h3><strong>Membuat Dialogflow intent</strong></h3>
 <p>Langkah-langkah:</p>
 <ol type="1" start="1">
 <li>Pada <a href="https://console.dialogflow.com/" target="_blank">Dialogflow Console</a>, tutup halaman pengaturan integrasi Asisten Google jika Anda telah membukanya. Di navigasi sebelah kiri, klik Intents lalu klik Create Intent. <strong>Intents</strong> then click on <strong>Create Intent</strong>.</li>
@@ -216,7 +216,7 @@
 <li>Enter &#34;What&#39;s your favorite color?&#34; as a prompt.</li>
 <li>Click <strong>Close</strong>.</li>
 </ul>
-<p><img style="max-width: 624.00px" src="img/5a803c2a8edc0f93.png"></p>
+<p><img style="max-width: 624.00px" src="img/18.png"></p>
 <ol type="1" start="5">
 <li>Dibawah dari <strong>Fulfillment</strong> bagian di halaman ini (bukan navigasi kiri), click <strong>Enable Fulfillment</strong>. Anda mungkin perlu memperluas bagian dengan mengklik panah menunjuk ke bawah..</li>
 <li>Turn on <strong>Enable webhook call for this intent</strong>.</li>
@@ -285,22 +285,20 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);</code></
 
         <google-codelab-step label="Selamat Codelab Selesai!" duration="0">
             <p>Selamat anda telah selesai mengikuti codelan kali ini berikut ini adalah materi yang kita pelajari.</p>
-            <h3 class="checklist">Ringkasa</h3>
-            <ul class="checklist">
-                <li>Firebase Authentication</li>
-                <li>Firebase Realtime Database</li>
-                <li>Firebase Rest API</li>
-                <li>Firebase Crash Reporting</li>
-            </ul>
-            <h3>Next Steps</h3>
-            <ul>
-                <li>Gunakan Firebase pada aplikasi Android kamu.</li>
-            </ul>
-            <h3>Learn More</h3>
-            <ul>
-                <li><a href="https://firebase.google.com" target="_blank">firebase.google.com</a></li>
-            </ul>
-
+            <h3 class="checklist">SELAMAT</h3>
+            <p>Anda sekarang tahu dasar-dasar membangun antarmuka pengguna percakapan dengan Action Assistant di Google.</p>
+           
+            
+<h3><strong>Apa selanjutnya ?</strong></h3>
+<p>Pada <a href="https://codelabs.developers.google.com/codelabs/actions-2/index.html" target="_blank">next codelab</a>, kamu akan lebih banyak belajar tentang  google assistant</p>
+<p>Kamu juga bisa ekplorasi materi tentang Actions on Google:</p>
+<ul>
+<li><a href="http://actions.google.com" target="_blank">actions.google.com</a>:  documentation site  Actions Google.</li>
+<li><a href="https://github.com/actions-on-google/" target="_blank">Actions on Google GitHub repo</a>: Sample code and libraries.</li>
+<li><a href="https://dialogflow.com/" target="_blank">Dialogflow.com</a>: official documentation site  Dialogflow.</li>
+<li><a href="https://plus.google.com/communities/105684267327487893574" target="_blank">Actions on Google Developers</a>: official Google+ community untuk developers yang bekerja dengan action google.</li>
+</ul>
+            
         </google-codelab-step>
 
     </google-codelab>
